@@ -288,8 +288,8 @@ def idxs_to_coords(idxs, transform, shape, offset="center"):
     IndexError
         if any linear index outside domain.
     """
-    idxs = np.asarray(idxs).astype(int)
-    size = np.multiply(*shape)
+    idxs = np.asarray(idxs).astype('int64')
+    size = np.multiply(np.int64(shape[0]), np.int64(shape[1]))
     if np.any(np.logical_or(idxs < 0, idxs >= size)):
         raise IndexError("idxs coordinates outside domain")
     ncol = shape[1]
